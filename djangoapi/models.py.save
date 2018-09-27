@@ -1,0 +1,35 @@
+
+from django.db import models
+
+# Create your models here.
+
+class ClienteModel(models.Model):
+	cedula = models.CharField(max_length = 100, blank = True, unique = True, null = False)
+	nombre = models.CharField(max_length = 100, blank = False, unique = False, null = False)
+	correo = models.CharField(max_length = 150, blank = False, unique = True, null = False)
+	edad = models.IntegerField(null = False)
+	nit = models.CharField(max_length = 100, blank = True, unique = True, null = False)
+	tipo_cliente = models.IntegerField(null = False)
+	"""0 para cliente natural, 1 para corporativo """
+
+class ParqueaderoModel(models.Model):
+	num_espacios = models.IntegerField(null = False)
+
+class ReservaModel(models.Model):
+	cantidad = models.IntegerField(null = False)
+
+class EspacioModel(models.Model):
+	tipo_carro = models.IntegerField(null = False)
+	#El vehiculo que se desea guardar, 0 para carro, 1 para moto y 2 para camion#
+
+class usuarioModel(models.Model):
+	ndocumento = models.CharField(max_length = 100, blank = False, unique = True, null = False)
+	nombre = models.CharField(max_length = 100, blank = False, unique = False, null = False)
+	correo = models.CharField(max_length = 150, blank = False, unique = True, null = False)
+	edad = models.IntegerField(null = False)
+	tipo = models.CharField(max_length = 150, blank = False, unique = False , null = False)
+
+
+
+
+
