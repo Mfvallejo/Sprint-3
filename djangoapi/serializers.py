@@ -18,7 +18,6 @@ class EspacioSerializer(serializers.ModelSerializer):
 
 class ReservaSerializer(serializers.ModelSerializer):
 	
-	espacios= EspacioSerializer(read_only=True, many=True)
 	class Meta:
 		model = ReservaModel
 		fields = ('usuario','fecha_inicio','fecha_fin', 'espacios')
