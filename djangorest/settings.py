@@ -78,10 +78,10 @@ WSGI_APPLICATION = 'djangorest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'nidoo',
+        'NAME': 'nidoo_db',
 	'USER': 'nidoo_user',
 	'PASSWORD': 'isis2503',
-	'HOST': 'localhost',
+	'HOST': '34.213.144.246',
 	'PORT': '5432',
     }
 }
