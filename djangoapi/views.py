@@ -10,6 +10,8 @@ from .models import ReservaModel
 from .models import EspacioModel
 from .models import ParqueaderoModel
 from .models import OcupadoModel
+import json, requests
+
 
 # Create your views here.
 
@@ -40,14 +42,13 @@ class CreateReservaView(generics.ListCreateAPIView):
                 """Save the post data when creating a new bucketlist."""
                 serializer.save()
 
-class CreateEspacioView(generics.ListCreateAPIView):
-        """This class defines the create behavior of our rest api."""
-        queryset = EspacioModel.objects.all()
-        serializer_class = EspacioSerializer
+def EspaciosList(request):
 
-        def perform_create(self, serializer):
-                """Save the post data when creating a new bucketlist."""
-                serializer.save()
+	queryset = EspacioModel.objects.all()
+	context = {
+		'espacios_list': queryset
+	}
+	return render(request, 'Espacios/espacios.html', context)
 
 class CreateOcupadoView(generics.ListCreateAPIView):
         """This class defines the create behavior of our rest api."""
@@ -57,4 +58,19 @@ class CreateOcupadoView(generics.ListCreateAPIView):
         def perform_create(self, serializer):
                 """Save the post data when creating a new bucketlist."""
                 serializer.save()
+
+
+def UsuariosList(request):
+	queryset = UsuarioModel.objects.all()
+	context = {
+		'usuarios_list': queryset
+	}
+	return render(request, 'Usuarios/usuarios.html', context)
+
+def ParqueaderosList(request):
+	queryset = ParqueaderoModel.objects.all()
+	context = {
+		'parqueaderos_list': queryset
+	}
+	return render(request, 'Parqueaderos/parqueaderos.html', context)
 

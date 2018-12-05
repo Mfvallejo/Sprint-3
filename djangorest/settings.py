@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'nidoo_db',
 	'USER': 'nidoo_user',
 	'PASSWORD': 'isis2503',
-	'HOST': '34.213.144.246',
+	'HOST': '54.200.156.11',
 	'PORT': '5432',
     }
 }
