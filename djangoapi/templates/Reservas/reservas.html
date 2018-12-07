@@ -33,7 +33,7 @@
                             <td>{{ x.usuario.nombre }}</td>
                             <td>{{ x.fecha_inicio }}</td>
                             <td>{{ x.fecha_fin }}</td>
-			    <td>{{ x.ocupados.all|join:", "}}</td>
+			    <td>{{ x.ocupados.all|join:", " }}</td>
                         </tr>
                         {% endfor %}
                         </tbody>
@@ -41,7 +41,7 @@
 
                     <div style="text-align:center;">
                         <button type="button" class="btn btn-primary waves-effect waves-light"
-                                onClick=" window.location.href='/' ">
+                                onClick=" window.location.href='/nidoo/' ">
                             Back
                         </button>
                     </div>

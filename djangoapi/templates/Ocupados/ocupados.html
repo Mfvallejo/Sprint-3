@@ -4,7 +4,7 @@
 <div class="content">
     <div class="">
         <div class="page-header-title">
-            <h4 class="page-title">Usuarios</h4>
+            <h4 class="page-title">Ocupados</h4>
         </div>
     </div>
 
@@ -19,22 +19,18 @@
                     <table class="table table-hover">
                         <thead>
                         <tr style="color:#0E2EB0">
-                            <th font color="red">Nombre</th>
-                            <th>Documento</th>
-                            <th>Correo</th>
-                            <th>Edad</th>
-			    <th>Tipo</th>	
+                            <th font color="red">Espacio</th>
+                            <th>Reserva</th>
+                            <th>Nombre</th>	
                         </tr>
                         </thead>
                         <tbody>
 
-                        {% for x in usuarios_list %}
+                        {% for x in ocupados_list %}
                         <tr>
+                            <td>{{ x.espacio.id }}</td>
+                            <td>{{ x.reserva.id }}</td>
                             <td>{{ x.nombre }}</td>
-                            <td>{{ x.n_documento }}</td>
-                            <td>{{ x.correo }}</td>
-                            <td>{{ x.edad }}</td>
-			    <td>{{ x.tipo }}</td>
                         </tr>
                         {% endfor %}
 

@@ -5,14 +5,16 @@ from .views import CreateReservaView
 from .views import EspaciosList
 from .views import ParqueaderosList
 from .views import CreateOcupadoView
+from .views import OcupadosList
+from .views import index
 
 urlpatterns = [
+	url('^$', index),
 	url('usuarios', UsuariosList),
 	url('espacios', EspaciosList),
-	url('reservas', ReservasList, name = 'reservas'),
-	url('create', CreateReservaView.as_view(), name = 'reservasCreate'),
+	url('reservas', ReservasList),
 	url('parqueaderos', ParqueaderosList),
-	url('ocupados', CreateOcupadoView.as_view()),
+	url('ocupados', OcupadosList),
 
 ]
 

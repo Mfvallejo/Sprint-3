@@ -24,10 +24,10 @@ class CreateUsuarioView(generics.ListCreateAPIView):
                 """Save the post data when creating a new bucketlist."""
                 serializer.save()
 
-class CreateParqueaderoView(generics.ListCreateAPIView):
+class CreateOcupadoView(generics.ListCreateAPIView):
         """This class defines the create behavior of our rest api."""
-        queryset = ParqueaderoModel.objects.all()
-        serializer_class = ParqueaderoSerializer
+        queryset = OcupadoModel.objects.all()
+        serializer_class = OcupadoSerializer
 
         def perform_create(self, serializer):
                 """Save the post data when creating a new bucketlist."""
@@ -42,6 +42,7 @@ class CreateReservaView(generics.ListCreateAPIView):
                 """Save the post data when creating a new bucketlist."""
                 serializer.save()
 
+
 def EspaciosList(request):
 
 	queryset = EspacioModel.objects.all()
@@ -49,16 +50,6 @@ def EspaciosList(request):
 		'espacios_list': queryset
 	}
 	return render(request, 'Espacios/espacios.html', context)
-
-class CreateOcupadoView(generics.ListCreateAPIView):
-        """This class defines the create behavior of our rest api."""
-        queryset = OcupadoModel.objects.all()
-        serializer_class = OcupadoSerializer
-
-        def perform_create(self, serializer):
-                """Save the post data when creating a new bucketlist."""
-                serializer.save()
-
 
 def UsuariosList(request):
 	queryset = UsuarioModel.objects.all()
@@ -79,4 +70,15 @@ def ReservasList(request):
 	context = {
 		'reservas_list': queryset
 	}
+	print(context)
 	return render(request, 'Reservas/reservas.html', context)
+
+def index(request):
+	return render(request, 'index.html')
+
+def OcupadosList(request):
+	queryset = OcupadoModel.objects.all()
+	context = {
+		'ocupados_list': queryset
+	}
+	return render(request, 'Ocupados/ocupados.html', context)
