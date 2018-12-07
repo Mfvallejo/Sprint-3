@@ -1,3 +1,5 @@
+
+
 {% extends 'base.html' %}
 {% block content %}
 
@@ -26,18 +28,14 @@
                         </tr>
                         </thead>
                         <tbody>
-
                         {% for x in reservas_list %}
                         <tr>
                             <td>{{ x.usuario.nombre }}</td>
                             <td>{{ x.fecha_inicio }}</td>
                             <td>{{ x.fecha_fin }}</td>
-                            {% for y in x.ocupados.all %}
-				    <td>{{ y.nombre }}</td>
-			    {% endfor %}
+			    <td>{{ x.ocupados.all|join:", "}}</td>
                         </tr>
                         {% endfor %}
-
                         </tbody>
                     </table>
 
