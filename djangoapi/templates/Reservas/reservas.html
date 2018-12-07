@@ -4,7 +4,7 @@
 <div class="content">
     <div class="">
         <div class="page-header-title">
-            <h4 class="page-title">Espacios</h4>
+            <h4 class="page-title">Reservas</h4>
         </div>
     </div>
 
@@ -19,20 +19,22 @@
                     <table class="table table-hover">
                         <thead>
                         <tr style="color:#0E2EB0">
-                            <th font color="red">Parqueadero</th>
-                            <th>Estado</th>
-                            <th>Tipo de vehículo</th>
-                            <th>numero</th>	
+                            <th font color="red">Usuario</th>
+                            <th>Fecha de inicio</th>
+                            <th>Fecha de finalización</th>
+                            <th>Ocupados</th>	
                         </tr>
                         </thead>
                         <tbody>
 
-                        {% for x in espacios_list %}
+                        {% for x in reservas_list %}
                         <tr>
-                            <td>{{ x.parqueadero.usuario.nombre }}</td>
-                            <td>{{ x.estado }}</td>
-                            <td>{{ x.tipo_vehiculo }}</td>
-                            <td>{{ x.numero }}</td>
+                            <td>{{ x.usuario.nombre }}</td>
+                            <td>{{ x.fecha_inicio }}</td>
+                            <td>{{ x.fecha_fin }}</td>
+                            {% for y in x.ocupados.all %}
+				    <td>{{ y.nombre }}</td>
+			    {% endfor %}
                         </tr>
                         {% endfor %}
 

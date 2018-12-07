@@ -74,3 +74,9 @@ def ParqueaderosList(request):
 	}
 	return render(request, 'Parqueaderos/parqueaderos.html', context)
 
+def ReservasList(request):
+	queryset = ReservaModel.objects.all()
+	context = {
+		'reservas_list': queryset
+	}
+	return render(request, 'Reservas/reservas.html', context)

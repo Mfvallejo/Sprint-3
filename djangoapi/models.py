@@ -16,6 +16,7 @@ class ParqueaderoModel(models.Model):
 	direccion = models.CharField(max_length = 100, blank = False, unique = False, null = False)
 	longitud = models.CharField(max_length = 100, blank = False, unique = False, null = False)
 	latitud = models.CharField(max_length = 100, blank = False, unique = False, null = False)
+	nombre = models.CharField(max_length = 100, blank = False, unique = False, null = False)
 
 def  parq_def():
 	return ParqueaderoModel.objects.get(id=1)
