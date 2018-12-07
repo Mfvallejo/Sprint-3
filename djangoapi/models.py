@@ -29,8 +29,8 @@ class EspacioModel(models.Model):
 
 class ReservaModel(models.Model):
 	usuario  = models.ForeignKey(UsuarioModel, on_delete=models.CASCADE, default= user_def().id)
-	fecha_inicio = models.CharField(max_length = 100, blank = False, unique = False, null = False)
-	fecha_fin = models.CharField(max_length = 100, blank = False, unique = False, null = False)
+	fecha_inicio = models.DateField(auto_now_add = True, blank = False, unique = False, null = False)
+	fecha_fin = models.DateField(auto_now_add = False, blank = False, unique = False, null = False)
 	ocupados = models.ManyToManyField(EspacioModel, through='OcupadoModel')
 
 class OcupadoModel(models.Model):
