@@ -55,9 +55,7 @@ def OcupadosList(request):
 	}
 	return render(request, 'Ocupados/ocupados.html', context)
 
-
-def ReservaCreate(request,id_usuario):
-	usuario = UsuarioModel.objects.get(variable=id_usuario)
+def ReservaCreate(request):
 	varName = Variable.objects.get(id=id_usuario)
 	form = ReservaForm(request.POST, instance = usuario)
 	if form.is_valid():
@@ -65,13 +63,15 @@ def ReservaCreate(request,id_usuario):
 	return redirect('reservasList')
 	return render(request, 'Reserva/reservaCreate.html',{'form':form, 'variable': varName.name})
 
+#def getId(request):
+
 def getRole(request):
-    user = request.user
-    auth0user = user.social_auth.get(provider="auth0")
-    accessToken = auth0user.extra_data['access_token']
-    url = "https://isis2503-msaravia98.auth0.com/userinfo"
-    headers = {'authorization': 'Bearer ' + accessToken}
-    resp = requests.get(url, headers=headers)
-    userinfo = resp.json()
-    role = userinfo['https://isis2503-msaravia98.auth0:com/role']
-    return (role)
+	user = request.user
+	auth0user = user.social_auth.get(provider="auth0")
+	accessToken = auth0user.extra_data['access_token']
+	url = "https://isis2503-msaravia98.auth0.com/userinfo"
+	headers = {'authorization': 'Bearer ' + accessToken}
+	resp = requests.get(url, headers=headers)
+	userinfo = resp.json()
+	role = userinfo['https://isis2503-msaravia98.auth0:com/role']
+	return (role)
