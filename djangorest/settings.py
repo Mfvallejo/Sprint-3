@@ -31,8 +31,8 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 LOGIN_URL = "/login/auth0"
-LOGIN_REDIRECT_URL = "/"
-LOGOUT_REDIRECT_URL = "https://isis2503-msaravia98.auth0.com/v2/logout?returnTo=http%3A%2F%2F34.219.191.193:8000"
+LOGIN_REDIRECT_URL = "/nidoo"
+LOGOUT_REDIRECT_URL = "https://isis2503-msaravia98.auth0.com/v2/logout?returnTo=http%3A%2F%2F54.202.41.46:8000/nidoo"
 
 
 SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
@@ -45,7 +45,7 @@ SOCIAL_AUTH_AUTH0_SCOPE = [
  'profile'
 ]
 AUTHENTICATION_BACKENDS = {
- 'nidoo.auth0backend.Auth0',
+ 'djangoapi.auth0backend.Auth0',
  'django.contrib.auth.backends.ModelBackend',
 }
 
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
     'rest_framework',
     'djangoapi',
 ]

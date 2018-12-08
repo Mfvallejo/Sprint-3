@@ -1,0 +1,10 @@
+{% extends 'base.html' %} 
+{% block content %} 
+<form method="POST"> 
+    {% csrf_token %}
+    <h2>{{ variable }}</h2>
+    <br>
+    {{ form.as_p }} 
+    <button type="submit" class="btn btn-primary waves-effect waves-light">Actualizar</button>
+</form> 
+{% endblock %}

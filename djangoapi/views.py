@@ -15,34 +15,6 @@ import json, requests
 
 # Create your views here.
 
-class CreateUsuarioView(generics.ListCreateAPIView):
-        """This class defines the create behavior of our rest api."""
-        queryset = UsuarioModel.objects.all()
-        serializer_class = UsuarioSerializer
-
-        def perform_create(self, serializer):
-                """Save the post data when creating a new bucketlist."""
-                serializer.save()
-
-class CreateOcupadoView(generics.ListCreateAPIView):
-        """This class defines the create behavior of our rest api."""
-        queryset = OcupadoModel.objects.all()
-        serializer_class = OcupadoSerializer
-
-        def perform_create(self, serializer):
-                """Save the post data when creating a new bucketlist."""
-                serializer.save()
-
-class CreateReservaView(generics.ListCreateAPIView):
-        """This class defines the create behavior of our rest api."""
-        queryset = ReservaModel.objects.all()
-        serializer_class = ReservaSerializer
-
-        def perform_create(self, serializer):
-                """Save the post data when creating a new bucketlist."""
-                serializer.save()
-
-
 def EspaciosList(request):
 
 	queryset = EspacioModel.objects.all()
@@ -82,3 +54,24 @@ def OcupadosList(request):
 		'ocupados_list': queryset
 	}
 	return render(request, 'Ocupados/ocupados.html', context)
+
+
+def ReservaCreate(request,id_usuario):
+	usuario = UsuarioModel.objects.get(variable=id_usuario)
+	varName = Variable.objects.get(id=id_usuario)
+	form = ReservaForm(request.POST, instance = usuario)
+	if form.is_valid():
+		form.save()
+	return redirect('reservasList')
+	return render(request, 'Reserva/reservaCreate.html',{'form':form, 'variable': varName.name})
+
+def getRole(request):
+    user = request.user
+    auth0user = user.social_auth.get(provider="auth0")
+    accessToken = auth0user.extra_data['access_token']
+    url = "https://isis2503-msaravia98.auth0.com/userinfo"
+    headers = {'authorization': 'Bearer ' + accessToken}
+    resp = requests.get(url, headers=headers)
+    userinfo = resp.json()
+    role = userinfo['https://isis2503-msaravia98.auth0:com/role']
+    return (role)
