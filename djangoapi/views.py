@@ -14,10 +14,17 @@ from .models import OcupadoModel
 import json, requests
 from django.http import JsonResponse
 from django.conf import settings
+import os
 
-client = MongoClient(settings.DB_HOST, int(settings.DB_PORT))
-db = client[settings.MONGO_DB]
-db.authenticate(settings.MLAB_USER, settings.MLAB_PASSWORD)
+dbHost = os.environ['DB_HOST']
+dbPort = os.environ['DB_PORT']
+mongoDB = os.environ['MONGO_DB']
+mlabUser = os.environ['MLAB_USER']
+mlabPass = os.environ['MLAB_PASSWORD']
+
+client = MongoClient(dbHost, int(dbPort))
+db = client[mongoDB]
+db.authenticate(mlabUser, mlabPass)
 
 # Create your views here.
 
