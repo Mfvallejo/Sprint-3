@@ -16,6 +16,7 @@ import json, requests
 from django.http import JsonResponse
 from django.conf import settings
 import os
+import logging
 
 dbHost = os.environ['DB_HOST']
 dbPort = os.environ['DB_PORT']
@@ -85,7 +86,17 @@ def crearReserva(request):
 	            "MongoObjectID": str(result),
         	    "Message": "Nuevo objeto en la base de datos"
 	        }
-	return JsonResponse(respo, safe=False)
+		return JsonResponse(respo, safe=False)
+	if request.method == "GET":
+			data = cole.find({})
+			result = []
+			for dto in data:
+				jsonData ={
+					'id': str(dto['id']),
+					"reserva": dto['reserva']
+				}
+				result.append(jsonData)
+			return JsonResponse(result[0], safe=False)
 
 def getRole(request):
 	user = request.user
