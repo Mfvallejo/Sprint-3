@@ -1,3 +1,4 @@
+from pymongo import MongoClient
 from django.shortcuts import render
 from rest_framework import generics
 from .serializers import UsuarioSerializer
@@ -11,7 +12,12 @@ from .models import EspacioModel
 from .models import ParqueaderoModel
 from .models import OcupadoModel
 import json, requests
+from django.http import JsonResponse
+from django.conf import settings
 
+client = MongoClient(settings.DB_HOST, int(settings.DB_PORT))
+db = client[settings.MONGO_DB]
+db.authenticate(settings.MLAB_USER, settings.MLAB_PASSWORD)
 
 # Create your views here.
 
@@ -54,6 +60,17 @@ def OcupadosList(request):
 		'ocupados_list': queryset
 	}
 	return render(request, 'Ocupados/ocupados.html', context)
+
+def crearReserva(request):
+	cole = db['reservas']
+	if request.method == 'POST':
+		data = JSONParser.parse(request)
+		result = cole.insert(data)
+		respo ={
+	            "MongoObjectID": str(result),
+        	    "Message": "Nuevo objeto en la base de datos"
+	        }
+	return JsonResponse(respo, safe=False)
 
 def ReservaCreate(request):
 	varName = Variable.objects.get(id=id_usuario)

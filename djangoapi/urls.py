@@ -5,10 +5,12 @@ from .views import EspaciosList
 from .views import ParqueaderosList
 from .views import OcupadosList
 from .views import index
+from .views import *
 
 urlpatterns = [
 	url('^$', index),
 	url(r'^usuarios', UsuariosList),
+	url(r'^crearReserva', crearReserva),
 	url(r'^espacios', EspaciosList),
 	url(r'^reservas', ReservasList),
 	url(r'^parqueaderos', ParqueaderosList),
