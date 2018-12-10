@@ -19,7 +19,7 @@ class ParqueaderoModel(models.Model):
 	nombre = models.CharField(max_length = 100, blank = False, unique = False, null = False)
 
 def  parq_def():
-	return ParqueaderoModel.objects.get(id=1)
+	return ParqueaderoModel.objects.get(id=2)
 
 class EspacioModel(models.Model):
 	parqueadero = models.ForeignKey(ParqueaderoModel, on_delete=models.CASCADE, default= parq_def().id)

@@ -9,3 +9,5 @@ psycopg2-binary
 social-auth-app-django
 requests
 request
+pymongo
+pytz
