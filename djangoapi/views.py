@@ -96,7 +96,7 @@ def crearReserva(request):
 					"reserva": dto['reserva']
 				}
 				result.append(jsonData)
-			return JsonResponse(result[0], safe=False)
+			return JsonResponse(result, safe=False)
 
 def getRole(request):
 	user = request.user
