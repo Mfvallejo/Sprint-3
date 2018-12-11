@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = "/nidoo/login/auth0"
 LOGIN_REDIRECT_URL = "/nidoo"
-LOGOUT_REDIRECT_URL = "https://isis2503-msaravia98.auth0.com/v2/logout?returnTo=http%3A%2F%2F54.202.41.46:8000/nidoo"
+LOGOUT_REDIRECT_URL = "https://isis2503-msaravia98.auth0.com/v2/logout?returnTo=http%3A%2F%2Fbalanceadorp-317013507.us-west-2.elb.amazonaws.com/nidoo"
 
 
 SOCIAL_AUTH_TRAILING_SLASH = False # Remove end slash from routes
