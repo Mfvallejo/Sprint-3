@@ -108,3 +108,12 @@ def getRole(request):
 	userinfo = resp.json()
 	role = userinfo['https://isis2503-msaravia98:auth0:com/role']
 	return (role)
+
+class CrearReservaView(generics.ListCreateAPIView):
+	"""This class defines the create behavior of our rest api."""
+	queryset = ReservaModel.objects.all()
+	serializer_class = ReservaSerializer
+
+	def perform_create(self, serializer):
+		"""Save the post data when creating a new bucketlist."""
+		serializer.save()

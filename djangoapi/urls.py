@@ -6,6 +6,7 @@ from .views import ParqueaderosList
 from .views import OcupadosList
 from .views import index
 from .views import *
+from .views import CreateEspacioView
 
 urlpatterns = [
 	url('^$', index),
@@ -17,6 +18,7 @@ urlpatterns = [
 	url(r'^ocupados', OcupadosList),
 	url(r'^', include('django.contrib.auth.urls')),
 	url(r'^', include('social_django.urls')),
+	url('createReserva', CreateReservaView.as_view()),
 ]
 
 
